@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="user"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Sign up for PCR test</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="secondary">
+
+  <ion-card style="border-radius: 10%; margin-top: 20px;" color="light">
+    <ion-card-header>
+      Results of your PCR test
+    </ion-card-header>
+    <ion-card-content>
+      <img class="pcr" src="assets/icon/pcr.png">
+      <p style="font-weight: bold; text-align: center; font-size: 20px; padding-bottom: 15px;" >There are no results of your PCR test.</p>
+      You probably still haven't taken the PCR test. If you have any
+      sympthoms of Covid19 virus, please
+      fill the form bellow and sign up for test. Take care of yourself and be responsible. Thank you!
+    </ion-card-content>
+  </ion-card>
+
+
+  <form #signUp="ngForm" (ngSubmit)="onSignUp(signUp)">
+    <ion-grid>
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-item>
+            <ion-label position="floating">JMBG</ion-label>
+            <ion-input type="number" ngModel name="jmbg" minlength="9" required #id="ngModel"></ion-input>
+          </ion-item>
+          <ion-item *ngIf="id.invalid && id.touched" lines="none">
+            <ion-label color="danger">
+              JMBG must have 13 digits!
+            </ion-label>
+          </ion-item>
+        </ion-col>
+        </ion-row>
+        <ion-row>
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-item>
+            <ion-label position="floating">Phone number</ion-label>
+            <ion-input type="number" ngModel name="phone" minlength="9" required #id="ngModel"></ion-input>
+          </ion-item>
+          <ion-item *ngIf="id.invalid && id.touched" lines="none">
+            <ion-label color="danger">
+              Phone number must have minimum 9 digits!
+            </ion-label>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-item>
+            <ion-label position="floating" style="width:100%">City</ion-label>
+            <ion-input ngModel required name="city"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="ion-justify-content-center">
+        <ion-col></ion-col>
+        <ion-col>
+          <ion-button type="submit" strong="true" color="primary" expand="block" shape="round"
+            [disabled]='signUp.invalid'>Sign up
+          </ion-button>
+        </ion-col>
+        <ion-col></ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+
+
+
+</ion-content>

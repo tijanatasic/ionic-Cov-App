@@ -1,0 +1,115 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="admin"></ion-back-button>
+    </ion-buttons>
+    <ion-title style="font-weight: bold;">PCR tests</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="secondary">
+  <ion-grid >
+    <ion-row>
+      <ion-col expand="true" style="background-color: #fcd1d1; margin-top: 30px;">
+        <ion-card-header color="primary" style=" color: black; ">Signed for PCR test</ion-card-header>
+      </ion-col>
+    </ion-row>
+    <ion-row class="first">
+      <ion-col>
+        Name
+      </ion-col>
+      <ion-col>
+        Surname
+      </ion-col>
+      <ion-col>
+        Contact
+      </ion-col>
+      <ion-col>
+        Result
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <p>Tijana</p>
+      </ion-col>
+      <ion-col>
+        <p>Tasić</p>
+      </ion-col>
+      <ion-col>
+        <p>0601234567</p>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-select placeholder="Select One">
+            <ion-select-option value="positive">Positive</ion-select-option>
+            <ion-select-option value="negative">Negative</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <p>Tamara</p>
+      </ion-col>
+      <ion-col>
+        <p>Matović</p>
+      </ion-col>
+      <ion-col>
+        <p>0601234567</p>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-select placeholder="Select One">
+            <ion-select-option value="positive">Positive</ion-select-option>
+            <ion-select-option value="negative">Negative</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <p>Marija<p>
+      </ion-col>
+      <ion-col>
+        <p>Todović</p>
+      </ion-col>
+      <ion-col>
+        <p>0601234567</p>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-select placeholder="Select One">
+            <ion-select-option value="positive">Positive</ion-select-option>
+            <ion-select-option value="negative">Negative</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <p>Nikolina</p>
+      </ion-col>
+      <ion-col>
+        <p>Papić</p>
+      </ion-col>
+      <ion-col>
+        <p>0601234567</p>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-select placeholder="Select One">
+            <ion-select-option value="positive">Positive</ion-select-option>
+            <ion-select-option value="negative">Negative</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col style="border: none; margin-top: 15px;">
+        <ion-button color="tertiary" strong="true" shape="round" (click)="presentAlert()">
+          Update results
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

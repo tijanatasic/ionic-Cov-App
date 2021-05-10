@@ -1,0 +1,69 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs"></ion-back-button>
+    </ion-buttons>
+    <ion-title mode="ios">
+      ADMINISTRATOR LOGIN
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+  <form #logInAdForm="ngForm" (ngSubmit)="onLogInAd(logInAdForm)">
+    <ion-grid>
+      <ion-row>
+        <ion-col size-sm="3" offset-sm="3">
+          <ion-item></ion-item>
+          <ion-item>
+            <ion-label position="floating">Name</ion-label>
+            <ion-input type="text" ngModel name="namee" namee required #namee="ngModel"></ion-input>
+          </ion-item>
+          <ion-item *ngIf="namee.invalid && namee.touched" lines="none">
+            <ion-label color="danger">
+              This field is required!
+            </ion-label>
+          </ion-item>
+        </ion-col>
+        <ion-col size-sm="3">
+          <ion-item></ion-item>
+          <ion-item>
+            <ion-label position="floating">Surname</ion-label>
+            <ion-input type="text" ngModel name="surname" surname required #surname="ngModel"></ion-input>
+          </ion-item>
+          <ion-item *ngIf="surname.invalid && surname.touched" lines="none">
+            <ion-label color="danger">
+              This field is required!
+            </ion-label>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-item>
+            <ion-label position="floating">Medical ID</ion-label>
+            <ion-input type="number" ngModel name="id" minlength="8" required #id="ngModel"></ion-input>
+          </ion-item>
+
+          <ion-item *ngIf="id.invalid && id.touched" lines="none">
+            <ion-label color="danger">
+              ID must have minimum 8 digits!
+            </ion-label>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="ion-justify-content-center">
+        <ion-col size-sm="6">
+          <ion-button type="submit" strong="true" color="primary" expand="block" shape="round"
+            [disabled]='logInAdForm.invalid'>Log
+            In
+          </ion-button>
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+  </form>
+</ion-content>

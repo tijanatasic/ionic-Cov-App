@@ -1,0 +1,86 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="admin"></ion-back-button>
+    </ion-buttons>
+    <ion-title style="font-weight: bold;">Update the number of vaccines</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="secondary">
+  <form>
+  <ion-card>
+    <ion-card-header color="success">
+      Change the number of available vaccines bellow
+    </ion-card-header>
+    <ion-card-content color="light">
+      <ion-grid>
+        <ion-row class="first-row">
+          <ion-col>
+            <div>Pfizer</div>
+          </ion-col>
+          <ion-col>
+            <div>Sputnik V</div>
+          </ion-col>
+          <ion-col>
+            <div>Sinopharm</div>
+          </ion-col>
+        </ion-row>
+        <ion-row class="second-row">
+          <ion-col>
+            <div>
+              <ion-input class="nums" value="50,324"></ion-input>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div>
+              <ion-input value="90,029"></ion-input>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div>
+              <ion-input value="200,421"></ion-input>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row class="first-row">
+          <ion-col>
+            <div>AstraZeneca</div>
+          </ion-col>
+          <ion-col>
+            <div>Moderna</div>
+          </ion-col>
+        </ion-row>
+        <ion-row class="second-row">
+        <ion-col>
+          <div>
+            <ion-input value="50,921"></ion-input>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div>
+            <ion-input value="9,203"></ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    </ion-card-content>
+  </ion-card>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-button color="success" strong="true" shape="round" (click)="presentAlert()">
+          Save changes
+        </ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button color="primary" strong="true" shape="round">
+          Discard changes
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</form>
+
+
+</ion-content>
