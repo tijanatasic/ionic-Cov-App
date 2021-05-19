@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {AppComponent} from '../app.component';
 
 @Component({
   selector: 'app-user',
@@ -11,8 +10,8 @@ export class UserPage implements OnInit {
   constructor() {
   }
 
-
   ngOnInit() {
   }
+
 
 }

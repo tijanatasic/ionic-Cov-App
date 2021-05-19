@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="admin"></ion-back-button>
+    </ion-buttons>
+    <ion-title style="font-weight: bold;">Vaccines</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="secondary">
+
+  <ion-grid>
+    <ion-row>
+      <ion-col expand="true" style=" background-color: #fcd1d1; margin-top: 30px;">
+        <ion-card-header color="primary" style=" color: black; ">Signed for vaccine</ion-card-header>
+      </ion-col>
+    </ion-row>
+    <ion-row class="first">
+      <ion-col>
+        <p>JMBG</p>
+      </ion-col>
+      <ion-col>
+        <p>Contact</p>
+      </ion-col>
+      <ion-col>
+        <p>Vaccine</p>
+      </ion-col>
+      <ion-col>
+        <p>Taken doses</p>
+      </ion-col>
+    </ion-row>
+    <app-vaccine-element *ngFor="let vaccine of vaccines" [vaccine]="vaccine"></app-vaccine-element>
+    <ion-row>
+      <ion-col style="border: none; margin-top: 15px;">
+        <ion-button color="tertiary" strong="true" shape="round" (click)="presentAlert()">
+          Update
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

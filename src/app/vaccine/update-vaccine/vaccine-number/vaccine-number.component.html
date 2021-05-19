@@ -1,14 +1,4 @@
-<ion-header>
-  <ion-toolbar color="light">
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="admin"></ion-back-button>
-    </ion-buttons>
-    <ion-title style="font-weight: bold;">Update the number of vaccines</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content color="secondary">
-  <form>
+<form #update="ngForm" (ngSubmit)="onUpdate(update)">
   <ion-card>
     <ion-card-header color="success">
       Change the number of available vaccines bellow
@@ -29,17 +19,17 @@
         <ion-row class="second-row">
           <ion-col>
             <div>
-              <ion-input class="nums" value="50,324"></ion-input>
+              <ion-input class="nums" ngModel name="pfizer" placeholder={{vaccineNum.pfizer}}></ion-input>
             </div>
           </ion-col>
           <ion-col>
             <div>
-              <ion-input value="90,029"></ion-input>
+              <ion-input ngModel name="sputnik" placeholder={{vaccineNum.sputnik}}></ion-input>
             </div>
           </ion-col>
           <ion-col>
             <div>
-              <ion-input value="200,421"></ion-input>
+              <ion-input ngModel name="sinopharm" placeholder={{vaccineNum.sinopharm}}></ion-input>
             </div>
           </ion-col>
         </ion-row>
@@ -54,12 +44,12 @@
         <ion-row class="second-row">
         <ion-col>
           <div>
-            <ion-input value="50,921"></ion-input>
+            <ion-input ngModel name="astra" placeholder={{vaccineNum.astra}}></ion-input>
           </div>
         </ion-col>
         <ion-col>
           <div>
-            <ion-input value="9,203"></ion-input>
+            <ion-input ngModel name="moderna" placeholder={{vaccineNum.moderna}}></ion-input>
           </div>
         </ion-col>
       </ion-row>
@@ -69,7 +59,7 @@
   <ion-grid>
     <ion-row>
       <ion-col>
-        <ion-button color="success" strong="true" shape="round" (click)="presentAlert()">
+        <ion-button type="submit" color="success" strong="true" shape="round" (click)="presentAlert()">
           Save changes
         </ion-button>
       </ion-col>
@@ -81,6 +71,3 @@
     </ion-row>
   </ion-grid>
 </form>
-
-
-</ion-content>

@@ -2,6 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import {AuthService} from '../auth.service';
 import {Router} from '@angular/router';
+import { VaccineService } from './vaccine.service';
+import { VaccineNumber } from './vaccine-number.model';
+
+interface VaccineNo{
+  id: string;
+  pfizer: number;
+  sputnik: number;
+  sinopharm: number;
+  astra: number;
+  moderna: number;
+}
+
 
 @Component({
   selector: 'app-vaccine',
@@ -10,27 +22,24 @@ import {Router} from '@angular/router';
 })
 export class VaccinePage implements OnInit {
 
-  phoneNumber=0;
-  jmbg=0;
-  vaccine=null;
+  vaccineNum: VaccineNumber;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private service: VaccineService) { }
 
   ngOnInit() {
+    this.service.getVaccines().subscribe((vaccineNum: VaccineNo)=>{
+      this.vaccineNum=vaccineNum;
+      console.log(this.vaccineNum);
+    });
   }
 
   onSignUp(signUp: NgForm) {
     console.log(signUp);
     if (signUp.valid) {
-      this.phoneNumber=signUp.value.phone;
-      this.jmbg=signUp.value.jmbg;
-      this.vaccine=signUp.value.vaccine;
-      this.authService.logIn();
+      this.service.addSigned(signUp.value.jmbg,signUp.value.phone,signUp.value.vaccine,'none').subscribe((res)=>{
+        console.log(res);
+      });
       this.router.navigateByUrl('/user');
-      signUp.reset();
     }
-    console.log(this.phoneNumber);
-    console.log(this.jmbg);
-    console.log(this.vaccine);
   }
 }

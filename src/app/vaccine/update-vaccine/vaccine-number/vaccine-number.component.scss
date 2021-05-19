@@ -1,0 +1,55 @@
+ion-card{
+  margin-top: 40px;
+}
+
+ion-card-header{
+
+  font-size: 23px;
+  text-align: center;
+  font-weight: bold;
+}
+
+ion-card-content{
+  background-color: #eff8ff;
+  padding-top: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.first-row{
+  font-size: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  ;
+}
+
+.second-row{
+  font-size: 25px;
+  color: white;
+}
+
+.second-row div{
+  background-color: black;
+  border-radius: 6%;
+}
+
+.second-row div{
+  padding:0;
+}
+
+ion-input{
+  background-color: #aee1e1;
+  border-radius: 6%;
+  border: solid 1px black;
+  padding: 0;
+  color: black;
+}
+
+ion-col{
+  text-align: center;
+}
+
+ion-input{
+  text-align: center;
+  padding-right: 10px;
+}

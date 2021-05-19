@@ -8,53 +8,9 @@
 </ion-header>
 <ion-content color="secondary">
 
-  <ion-card color="light">
-    <ion-card-header color="success">
-      Available vaccines in Serbia
-    </ion-card-header>
-    <ion-card-content>
-      <ion-grid>
-        <ion-row class="first-row">
-          <ion-col>
-            <div>Pfizer</div>
-          </ion-col>
-          <ion-col>
-            <div>Sputnik V</div>
-          </ion-col>
-          <ion-col>
-            <div>Sinopharm</div>
-          </ion-col>
-        </ion-row>
-        <ion-row class="second-row">
-          <ion-col>
-            <div>50,324</div>
-          </ion-col>
-          <ion-col>
-            <div>90,029</div>
-          </ion-col>
-          <ion-col>
-            <div>200,421</div>
-          </ion-col>
-        </ion-row>
-        <ion-row class="first-row">
-          <ion-col>
-            <div>AstraZeneca</div>
-          </ion-col>
-          <ion-col>
-            <div>Moderna</div>
-          </ion-col>
-        </ion-row>
-        <ion-row class="second-row">
-        <ion-col>
-          <div>50,921</div>
-        </ion-col>
-        <ion-col>
-          <div>9,203</div>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-    </ion-card-content>
-  </ion-card>
+  <app-numbers *ngIf="vaccineNum" [vaccineNum]="vaccineNum"></app-numbers>
+
+
 
   <p>
     So far, there are over 3,661,516 people who received the first dose of vaccine, which makes about a 30%

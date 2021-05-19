@@ -1,0 +1,47 @@
+<ion-card color="light">
+    <ion-card-header color="success">
+      Available vaccines in Serbia
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row class="first-row">
+          <ion-col>
+            <div>Pfizer</div>
+          </ion-col>
+          <ion-col>
+            <div>Sputnik V</div>
+          </ion-col>
+          <ion-col>
+            <div>Sinopharm</div>
+          </ion-col>
+        </ion-row>
+        <ion-row class="second-row">
+          <ion-col>
+            <div>{{vaccineNum.pfizer}}</div>
+          </ion-col>
+          <ion-col>
+            <div>{{vaccineNum.sputnik}}</div>
+          </ion-col>
+          <ion-col>
+            <div>{{vaccineNum.sinopharm}}</div>
+          </ion-col>
+        </ion-row>
+        <ion-row class="first-row">
+          <ion-col>
+            <div>AstraZeneca</div>
+          </ion-col>
+          <ion-col>
+            <div>Moderna</div>
+          </ion-col>
+        </ion-row>
+        <ion-row class="second-row">
+        <ion-col>
+          <div>{{vaccineNum.astra}}</div>
+        </ion-col>
+        <ion-col>
+          <div>{{vaccineNum.moderna}}</div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    </ion-card-content>
+  </ion-card>

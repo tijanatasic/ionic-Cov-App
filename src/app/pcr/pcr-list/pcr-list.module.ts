@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { PcrListPageRoutingModule } from './pcr-list-routing.module';
 
 import { PcrListPage } from './pcr-list.page';
+import { PcrElementComponent } from '../pcr-element/pcr-element.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { PcrListPage } from './pcr-list.page';
     IonicModule,
     PcrListPageRoutingModule
   ],
-  declarations: [PcrListPage]
+  declarations: [PcrListPage,PcrElementComponent]
 })
 export class PcrListPageModule {}

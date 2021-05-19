@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { VaccinesListPageRoutingModule } from './vaccines-list-routing.module';
 
 import { VaccinesListPage } from './vaccines-list.page';
+import { VaccineElementComponent } from '../vaccine-element/vaccine-element.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { VaccinesListPage } from './vaccines-list.page';
     IonicModule,
     VaccinesListPageRoutingModule
   ],
-  declarations: [VaccinesListPage]
+  declarations: [VaccinesListPage,VaccineElementComponent]
 })
 export class VaccinesListPageModule {}

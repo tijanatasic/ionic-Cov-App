@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { VaccinePageRoutingModule } from './vaccine-routing.module';
 
 import { VaccinePage } from './vaccine.page';
+import { NumbersComponent } from './numbers/numbers.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { VaccinePage } from './vaccine.page';
     IonicModule,
     VaccinePageRoutingModule
   ],
-  declarations: [VaccinePage]
+  declarations: [VaccinePage,NumbersComponent]
 })
 export class VaccinePageModule {}

@@ -1,0 +1,13 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="admin"></ion-back-button>
+    </ion-buttons>
+    <ion-title style="font-weight: bold;">Update the number of vaccines</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="secondary">
+  <app-vaccine-number *ngIf="vaccineNum" [vaccineNum]="vaccineNum">
+  </app-vaccine-number>
+</ion-content>

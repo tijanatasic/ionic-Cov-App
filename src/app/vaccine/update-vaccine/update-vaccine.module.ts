@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { UpdateVaccinePageRoutingModule } from './update-vaccine-routing.module';
 
 import { UpdateVaccinePage } from './update-vaccine.page';
+import { VaccineNumberComponent } from './vaccine-number/vaccine-number.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { UpdateVaccinePage } from './update-vaccine.page';
     IonicModule,
     UpdateVaccinePageRoutingModule
   ],
-  declarations: [UpdateVaccinePage]
+  declarations: [UpdateVaccinePage,VaccineNumberComponent]
 })
 export class UpdateVaccinePageModule {}

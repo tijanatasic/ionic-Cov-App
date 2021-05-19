@@ -10,12 +10,12 @@ const routes: Routes = [
   {
     path: 'user',
     loadChildren: () => import('./user/user.module').then( m => m.UserPageModule),
-    canLoad: [AuthGuard]
+    // canLoad: [AuthGuard]
   },
   {
     path: 'admin',
     loadChildren: () => import('./admin/admin.module').then( m => m.AdminPageModule),
-    canLoad: [AuthGuard]
+    // canLoad: [AuthGuard]
   },
   {
     path: 'overview',
@@ -31,18 +31,18 @@ const routes: Routes = [
   },
   {
     path: 'update-vaccine',
-    loadChildren: () => import('./update-vaccine/update-vaccine.module').then( m => m.UpdateVaccinePageModule),
-    canLoad: [AuthGuard]
+    loadChildren: () => import('./vaccine/update-vaccine/update-vaccine.module').then( m => m.UpdateVaccinePageModule),
+    // canLoad: [AuthGuard]
   },
   {
     path: 'vaccines-list',
-    loadChildren: () => import('./vaccines-list/vaccines-list.module').then( m => m.VaccinesListPageModule),
-    canLoad: [AuthGuard]
+    loadChildren: () => import('./vaccine/vaccines-list/vaccines-list.module').then( m => m.VaccinesListPageModule),
+    // canLoad: [AuthGuard]
   },
   {
     path: 'pcr-list',
-    loadChildren: () => import('./pcr-list/pcr-list.module').then( m => m.PcrListPageModule),
-    canLoad: [AuthGuard]
+    loadChildren: () => import('./pcr/pcr-list/pcr-list.module').then( m => m.PcrListPageModule),
+    // canLoad: [AuthGuard]
   },
 
 ];
