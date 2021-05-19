@@ -29,7 +29,6 @@ export class PcrService {
     return this.http.get<{[key: string]: PcrData}>('https://covapp-ionic-default-rtdb.europe-west1.firebasedatabase.app/pcr.json')
     .pipe(map((res)=>{
       const pcrs: PcrData[]=[];
-
       for(const key in res){
         if(res.hasOwnProperty(key)){
           pcrs.push({
@@ -43,5 +42,9 @@ export class PcrService {
       }
       return pcrs;
     }));
+  }
+
+  updateSigned(){
+
   }
 }

@@ -19,18 +19,19 @@ interface PcrData{
 })
 
 export class PcrListPage implements OnInit {
-  pcrs: Pcr[]=[{id: 'a1', jmbg: 121412, phone: 13312, city: 'Beograd',result: 'none'}];
+  pcrs: Pcr[]=[];
   constructor(public alertController: AlertController,private router: Router, private service: PcrService) { }
+
   async presentAlert() {
     const alert = await this.alertController.create({
       message: 'You have successfully added results of PCR tests',
       buttons: [
         {
-                text: 'Okay',
-                handler: () => {
-                  this.router.navigateByUrl('admin');
-                }
-              }
+          text: 'Okay',
+          handler: () => {
+          this.router.navigateByUrl('admin');
+          }
+        }
       ]
     });
     await alert.present();

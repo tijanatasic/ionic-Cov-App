@@ -5,14 +5,14 @@ import { AlertController } from '@ionic/angular';
 import { VaccineNumber } from '../../vaccine-number.model';
 import { VaccineService } from '../../vaccine.service';
 
-interface VaccineNo{
-  id: string;
-  pfizer: number;
-  sputnik: number;
-  sinopharm: number;
-  astra: number;
-  moderna: number;
-}
+// interface VaccineNo{
+//   id: string;
+//   pfizer: number;
+//   sputnik: number;
+//   sinopharm: number;
+//   astra: number;
+//   moderna: number;
+// }
 
 @Component({
   selector: 'app-vaccine-number',
@@ -34,6 +34,21 @@ export class VaccineNumberComponent implements OnInit {
   async presentAlert() {
     const alert = await this.alertController.create({
       message: 'You have updated number of available vaccines successfully',
+      buttons: [
+        {
+          text: 'Okay',
+          handler: () => {
+          this.router.navigateByUrl('admin');
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+  async discardAlert(){
+    const alert = await this.alertController.create({
+      message: 'You have discarded changes successfully',
       buttons: [
         {
           text: 'Okay',

@@ -4,6 +4,7 @@ import {AuthService} from '../auth.service';
 import {Router} from '@angular/router';
 import { VaccineService } from './vaccine.service';
 import { VaccineNumber } from './vaccine-number.model';
+import { AlertController } from '@ionic/angular';
 
 interface VaccineNo{
   id: string;
@@ -24,7 +25,7 @@ export class VaccinePage implements OnInit {
 
   vaccineNum: VaccineNumber;
 
-  constructor(private authService: AuthService, private router: Router, private service: VaccineService) { }
+  constructor(private alertController: AlertController, private router: Router, private service: VaccineService) { }
 
   ngOnInit() {
     this.service.getVaccines().subscribe((vaccineNum: VaccineNo)=>{
@@ -41,5 +42,20 @@ export class VaccinePage implements OnInit {
       });
       this.router.navigateByUrl('/user');
     }
+  }
+
+  async presentAlert(){
+    const alert = await this.alertController.create({
+      message: 'You signed up for a vaccine successfully',
+      buttons: [
+        {
+          text: 'Okay',
+          handler: () => {
+          this.router.navigateByUrl('user');
+          }
+        }
+      ]
+    });
+    await alert.present();
   }
 }

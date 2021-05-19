@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../auth.service';
+import { AlertController } from '@ionic/angular';
 import { PcrService } from './pcr.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { PcrService } from './pcr.service';
 })
 export class PcrPage implements OnInit {
 
-  constructor(private authService: AuthService, private router: Router, private service: PcrService) { }
+  constructor(private alertController: AlertController, private router: Router, private service: PcrService) { }
 
   ngOnInit() {
   }
@@ -25,4 +25,20 @@ export class PcrPage implements OnInit {
       this.router.navigateByUrl('/user');
     }
   }
+
+  async presentAlert(){
+    const alert = await this.alertController.create({
+      message: 'You signed up for a PCR test successfully',
+      buttons: [
+        {
+          text: 'Okay',
+          handler: () => {
+          this.router.navigateByUrl('user');
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
 }

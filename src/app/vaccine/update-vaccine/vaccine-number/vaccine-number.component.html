@@ -19,17 +19,17 @@
         <ion-row class="second-row">
           <ion-col>
             <div>
-              <ion-input class="nums" ngModel name="pfizer" placeholder={{vaccineNum.pfizer}}></ion-input>
+              <ion-input type="number" ngModel name="pfizer" placeholder={{vaccineNum.pfizer}} required></ion-input>
             </div>
           </ion-col>
           <ion-col>
             <div>
-              <ion-input ngModel name="sputnik" placeholder={{vaccineNum.sputnik}}></ion-input>
+              <ion-input ngModel type="number" name="sputnik" placeholder={{vaccineNum.sputnik}} required></ion-input>
             </div>
           </ion-col>
           <ion-col>
             <div>
-              <ion-input ngModel name="sinopharm" placeholder={{vaccineNum.sinopharm}}></ion-input>
+              <ion-input ngModel type="number" name="sinopharm" placeholder={{vaccineNum.sinopharm}} required></ion-input>
             </div>
           </ion-col>
         </ion-row>
@@ -44,12 +44,12 @@
         <ion-row class="second-row">
         <ion-col>
           <div>
-            <ion-input ngModel name="astra" placeholder={{vaccineNum.astra}}></ion-input>
+            <ion-input ngModel type="number" name="astra" placeholder={{vaccineNum.astra}} required></ion-input>
           </div>
         </ion-col>
         <ion-col>
           <div>
-            <ion-input ngModel name="moderna" placeholder={{vaccineNum.moderna}}></ion-input>
+            <ion-input ngModel type="number" name="moderna" placeholder={{vaccineNum.moderna}} required></ion-input>
           </div>
         </ion-col>
       </ion-row>
@@ -64,7 +64,7 @@
         </ion-button>
       </ion-col>
       <ion-col>
-        <ion-button color="primary" strong="true" shape="round">
+        <ion-button color="primary" strong="true" shape="round" (click)="discardAlert()">
           Discard changes
         </ion-button>
       </ion-col>
