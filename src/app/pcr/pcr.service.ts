@@ -44,7 +44,9 @@ export class PcrService {
     }));
   }
 
-  updateSigned(){
-
+  updateSigned(element: Pcr){
+    return this.http.put<any>('https://covapp-ionic-default-rtdb.europe-west1.firebasedatabase.app/pcr/'
+    +element.id+'.json'
+    ,JSON.stringify(element)).subscribe();
   }
 }

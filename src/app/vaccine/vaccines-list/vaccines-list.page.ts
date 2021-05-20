@@ -42,6 +42,11 @@ export class VaccinesListPage implements OnInit {
       this.service.updateVaccines(element);
     });
     await alert.present();
+    this.vaccines.forEach(element => {
+      if(element.dose==='Both'){
+        this.service.deleteVaccinated(element);
+      }
+    });
   }
 
   ngOnInit() {

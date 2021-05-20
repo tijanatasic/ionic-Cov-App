@@ -34,8 +34,10 @@ export class PcrListPage implements OnInit {
         }
       ]
     });
+    this.pcrs.forEach(element => {
+      this.service.updateSigned(element);
+    });
     await alert.present();
-    console.log(this.pcrs);
   }
 
   ngOnInit() {

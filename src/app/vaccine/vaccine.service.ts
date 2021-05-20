@@ -28,6 +28,8 @@ interface VaccineNo{
 })
 export class VaccineService {
 
+  postID;
+
 
   vaccines: Vaccine[];
   vaccineNum: VaccineNumber[];
@@ -88,18 +90,14 @@ export class VaccineService {
   }
 
   updateVaccines(element: Vaccine){
-    const httpHeader=new HttpHeaders({
-      // eslint-disable-next-line @typescript-eslint/naming-convention
-      'Access-Control-Allow-Origin' : '*'
-    });
-    const options={
-      headers: httpHeader
-    };
-    console.log(JSON.stringify(element));
-    return this.http.put<Vaccine>('https://covapp-ionic-default-rtdb.europe-west1.firebasedatabase.app/vaccine/'+element.id
-    ,JSON.stringify(element),options).subscribe((res)=>{
-    },(error)=>{
-      console.log(error+' nestooooooo ');
-    });
+    return this.http.put<any>('https://covapp-ionic-default-rtdb.europe-west1.firebasedatabase.app/vaccine/'
+    +element.id+'.json'
+    ,JSON.stringify(element)).subscribe();
+  }
+
+  deleteVaccinated(element: Vaccine){
+    console.log(element);
+    return this.http.delete<void>('https://covapp-ionic-default-rtdb.europe-west1.firebasedatabase.app/vaccine/'
+    +element.id+'.json').subscribe();
   }
 }
