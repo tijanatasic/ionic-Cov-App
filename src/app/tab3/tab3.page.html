@@ -11,50 +11,37 @@
 
 
 <ion-content>
-
   <form #logInAdForm="ngForm" (ngSubmit)="onLogInAd(logInAdForm)">
     <ion-grid>
       <ion-row>
-        <ion-col size-sm="3" offset-sm="3">
-          <ion-item></ion-item>
-          <ion-item>
-            <ion-label position="floating">Name</ion-label>
-            <ion-input type="text" ngModel name="namee" namee required #namee="ngModel"></ion-input>
-          </ion-item>
-          <ion-item *ngIf="namee.invalid && namee.touched" lines="none">
-            <ion-label color="danger">
-              This field is required!
-            </ion-label>
-          </ion-item>
-        </ion-col>
-        <ion-col size-sm="3">
-          <ion-item></ion-item>
-          <ion-item>
-            <ion-label position="floating">Surname</ion-label>
-            <ion-input type="text" ngModel name="surname" surname required #surname="ngModel"></ion-input>
-          </ion-item>
-          <ion-item *ngIf="surname.invalid && surname.touched" lines="none">
-            <ion-label color="danger">
-              This field is required!
-            </ion-label>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row>
         <ion-col size-sm="6" offset-sm="3">
-          <ion-item>
-            <ion-label position="floating">Medical ID</ion-label>
-            <ion-input type="number" ngModel name="id" minlength="8" required #id="ngModel"></ion-input>
-          </ion-item>
+          <ion-list>
+            <ion-item>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Email</ion-label>
+              <ion-input type="email" ngModel name="email" email required #email="ngModel"></ion-input>
+            </ion-item>
 
-          <ion-item *ngIf="id.invalid && id.touched" lines="none">
-            <ion-label color="danger">
-              ID must have minimum 8 digits!
-            </ion-label>
-          </ion-item>
+            <ion-item *ngIf="email.invalid && email.touched" lines="none">
+              <ion-label color="danger">
+                Enter a valid email address!
+              </ion-label>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="floating">Password</ion-label>
+              <ion-input type="password" ngModel name="password" minlength="7" required #password="ngModel"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="password.invalid && password.touched" lines="none">
+              <ion-label color="danger">
+                Password must have minimum 7 characters!
+              </ion-label>
+            </ion-item>
+
+          </ion-list>
         </ion-col>
       </ion-row>
-
       <ion-row class="ion-justify-content-center">
         <ion-col size-sm="6">
           <ion-button type="submit" strong="true" color="primary" expand="block" shape="round"
@@ -63,7 +50,5 @@
           </ion-button>
         </ion-col>
       </ion-row>
-
     </ion-grid>
   </form>
-</ion-content>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MenuController } from '@ionic/angular';
+import { AuthService } from './auth.service';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +8,7 @@ import { MenuController } from '@ionic/angular';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor(private menu: MenuController) {}
+  constructor(private menu: MenuController, private authService: AuthService) {}
 
   openUser() {
     this.menu.enable(true, 'firstMenu');
@@ -19,4 +20,8 @@ export class AppComponent {
     this.menu.open('secondMenu');
   }
 
+  logout(){
+    console.log('Logged out');
+    this.authService.logOut();
+  }
 }
