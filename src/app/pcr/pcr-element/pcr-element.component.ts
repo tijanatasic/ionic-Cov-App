@@ -13,4 +13,8 @@ export class PcrElementComponent implements OnInit {
 
   ngOnInit() {}
 
+  changeData(value: string){
+    this.pcr.result=value;
+  }
+
 }

@@ -35,11 +35,13 @@ export class PcrListPage implements OnInit {
       ]
     });
     await alert.present();
+    console.log(this.pcrs);
   }
 
   ngOnInit() {
       this.service.getSigned().subscribe((pcrs: PcrData[])=>{
         this.pcrs=pcrs;
+
       });
   }
 }

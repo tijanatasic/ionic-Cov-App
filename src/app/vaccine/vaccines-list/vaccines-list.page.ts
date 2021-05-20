@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
@@ -36,6 +37,9 @@ export class VaccinesListPage implements OnInit {
           }
         }
       ]
+    });
+    this.vaccines.forEach(element => {
+      this.service.updateVaccines(element);
     });
     await alert.present();
   }

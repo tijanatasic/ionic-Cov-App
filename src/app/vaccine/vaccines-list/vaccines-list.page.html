@@ -6,9 +6,7 @@
     <ion-title style="font-weight: bold;">Vaccines</ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content color="secondary">
-
   <ion-grid>
     <ion-row>
       <ion-col expand="true" style=" background-color: #fcd1d1; margin-top: 30px;">
@@ -29,10 +27,11 @@
         <p>Taken doses</p>
       </ion-col>
     </ion-row>
-    <app-vaccine-element *ngFor="let vaccine of vaccines" [vaccine]="vaccine"></app-vaccine-element>
+    <app-vaccine-element *ngFor="let vaccine of vaccines" [vaccine]="vaccine">
+    </app-vaccine-element>
     <ion-row>
       <ion-col style="border: none; margin-top: 15px;">
-        <ion-button color="tertiary" strong="true" shape="round" (click)="presentAlert()">
+        <ion-button type="submit" color="tertiary" strong="true" shape="round" (click)="presentAlert()">
           Update
         </ion-button>
       </ion-col>

@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {map} from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import {catchError, map, retry} from 'rxjs/operators';
 import { VaccineNumber } from './vaccine-number.model';
 import {Vaccine} from './vaccine.model';
 
@@ -21,15 +22,19 @@ interface VaccineNo{
   moderna: number;
 }
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class VaccineService {
 
+
   vaccines: Vaccine[];
   vaccineNum: VaccineNumber[];
 
   constructor(private http: HttpClient) { }
+
+
 
   addSigned(jmbg: number, phone: number, vaccine: string, dose: string){
     return this.http.post<{jmbg: number}>('https://covapp-ionic-default-rtdb.europe-west1.firebasedatabase.app/vaccine.json',{
@@ -80,5 +85,21 @@ export class VaccineService {
       }
       return numbers[numbers.length-1];
     }));
+  }
+
+  updateVaccines(element: Vaccine){
+    const httpHeader=new HttpHeaders({
+      // eslint-disable-next-line @typescript-eslint/naming-convention
+      'Access-Control-Allow-Origin' : '*'
+    });
+    const options={
+      headers: httpHeader
+    };
+    console.log(JSON.stringify(element));
+    return this.http.put<Vaccine>('https://covapp-ionic-default-rtdb.europe-west1.firebasedatabase.app/vaccine/'+element.id
+    ,JSON.stringify(element),options).subscribe((res)=>{
+    },(error)=>{
+      console.log(error+' nestooooooo ');
+    });
   }
 }

@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Vaccine } from '../vaccine.model';
 
 @Component({
@@ -14,4 +15,7 @@ export class VaccineElementComponent implements OnInit {
 
   ngOnInit() {}
 
+  changeData(value: string){
+    this.vaccine.dose=value;
+  }
 }

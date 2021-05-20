@@ -1,3 +1,4 @@
+<form >
 <ion-row>
       <ion-col>
         <p>{{pcr.jmbg}}</p>
@@ -10,10 +11,11 @@
       </ion-col>
       <ion-col>
         <ion-item>
-          <ion-select placeholder="Select One">
+          <ion-select #C (ionChange)="changeData(C.value)" placeholder="{{pcr.result}}">
             <ion-select-option value="positive">Positive</ion-select-option>
             <ion-select-option value="negative">Negative</ion-select-option>
           </ion-select>
         </ion-item>
       </ion-col>
     </ion-row>
+</form>
