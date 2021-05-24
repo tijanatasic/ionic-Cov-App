@@ -1,7 +1,9 @@
-export interface Pcr {
-  id: string;
-  jmbg: number;
-  phone: number;
-  city: string;
-  result: string;
+export class Pcr {
+
+  // constructor(public id: string,public jmbg: number,public phone: number
+  //   ,public city: string, public result: string, public userID: string){
+    constructor(public id: string,public jmbg: number,public phone: number
+      ,public city: string, public result: string){
+
+  }
 }

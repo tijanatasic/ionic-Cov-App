@@ -40,7 +40,8 @@ export class VaccinePage implements OnInit {
       this.service.addSigned(signUp.value.jmbg,signUp.value.phone,signUp.value.vaccine,'none').subscribe((res)=>{
         console.log(res);
       });
-      this.router.navigateByUrl('/user');
+      this.presentAlert();
+      signUp.reset();
     }
   }
 

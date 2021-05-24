@@ -43,7 +43,6 @@ export class PcrListPage implements OnInit {
   ngOnInit() {
       this.service.getSigned().subscribe((pcrs: PcrData[])=>{
         this.pcrs=pcrs;
-
       });
   }
 }

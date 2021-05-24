@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import {User} from '../app/user/user.model';
 import {map, tap} from 'rxjs/operators';
@@ -22,15 +22,19 @@ interface UserData {
   gender?: string;
   contact?: number;
   password: string;
+  userId: string;
 }
 
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthService {
+  public currentUser=null;
   private _user = new BehaviorSubject<User>(null);
   private _isUserAuthenticated = false;
+
 
   constructor(private http: HttpClient) { }
 
@@ -45,6 +49,20 @@ export class AuthService {
       })
     );
   }
+
+
+  get usersId(){
+    return this._user.asObservable().pipe(
+      map((user) => {
+        if (user) {
+          return !!user.id;
+        } else {
+          return null;
+        }
+      })
+    );
+  }
+
 
   register(user: UserData) {
     this._isUserAuthenticated = true;
@@ -69,6 +87,9 @@ export class AuthService {
         tap((userData) => {
           const expirationTime = new Date(new Date().getTime() + +userData.expiresIn * 1000);
           const user1 = new User(userData.localId, userData.email, userData.idToken, expirationTime);
+          //moje
+          console.log(user1);
+          this.currentUser=user1;
           this._user.next(user1);
         })
       );

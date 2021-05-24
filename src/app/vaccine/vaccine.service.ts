@@ -47,7 +47,6 @@ export class VaccineService {
     return this.http.get<{[key: string]: VaccineData}>('https://covapp-ionic-default-rtdb.europe-west1.firebasedatabase.app/vaccine.json')
     .pipe(map((res)=>{
       const vaccines: VaccineData[]=[];
-
       for(const key in res){
         if(res.hasOwnProperty(key)){
           vaccines.push({

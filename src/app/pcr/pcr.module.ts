@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { PcrPageRoutingModule } from './pcr-routing.module';
 
 import { PcrPage } from './pcr.page';
+import { PcrResultComponent } from './pcr-result/pcr-result.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { PcrPage } from './pcr.page';
     IonicModule,
     PcrPageRoutingModule
   ],
-  declarations: [PcrPage]
+  declarations: [PcrPage,PcrResultComponent]
 })
 export class PcrPageModule {}
