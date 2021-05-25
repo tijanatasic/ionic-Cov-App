@@ -8,7 +8,7 @@ import { AuthService } from './auth.service';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor(private menu: MenuController, private authService: AuthService) {}
+  constructor(private menu: MenuController, public authService: AuthService) {}
 
   openUser() {
     this.menu.enable(true, 'firstMenu');

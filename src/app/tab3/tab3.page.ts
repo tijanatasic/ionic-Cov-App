@@ -21,8 +21,8 @@ export class Tab3Page {
         .create({ message: 'Logging in admin... ' })
         .then((loadingEl) => {
           loadingEl.present();
-
           this.authService.logIn(logInAdForm.value).subscribe(resData => {
+            this.authService.currentUser.isAdmin=true;
             console.log(resData.email.includes('@covid'));
             if (!resData.email.includes('@covid')) {
               console.log('prijava neuspesna');
@@ -35,6 +35,7 @@ export class Tab3Page {
               console.log(resData);
               loadingEl.dismiss();
               this.router.navigateByUrl('/admin');
+              logInAdForm.reset();
             }
           });
         });

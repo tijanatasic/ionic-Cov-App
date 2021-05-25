@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
@@ -22,6 +22,7 @@ interface PcrData{
   styleUrls: ['./pcr.page.scss'],
 })
 export class PcrPage implements OnInit {
+  public element='';
   public user: User;
   public pcr: Pcr;
   public pcrs: Pcr[]=[];
@@ -31,26 +32,22 @@ export class PcrPage implements OnInit {
 
   ngOnInit() {
     this.user=this.authService.currentUser;
-    console.log(this.user);
-    // this.checkResult(this.user.id);
+    this.checkResult(this.user.id);
   }
 
   onSignUp(signUp: NgForm) {
     if (signUp.valid) {
-      this.pcrService.addSigned(signUp.value.jmbg,signUp.value.phone,signUp.value.city,'none').subscribe((res)=>{
-        console.log(res);
-      });
+      this.pcrService.addSigned(signUp.value.jmbg,signUp.value.phone,signUp.value.city,'none');
       this.presentAlert();
       signUp.reset();
     }
   }
 
   checkResult(id: string){
-    // this.pcrService.getSigned().subscribe((pcrs: PcrData[])=>{
-    //   this.pcrs=pcrs;
-    //   console.log(this.pcrs);
-    //   this.pcrService.checkResult(id,this.pcrs);
-    // });
+    this.pcrService.getSigned().subscribe((pcrs: PcrData[])=>{
+      this.pcrs=pcrs;
+      this.element=this.pcrService.checkResult(id,this.pcrs);
+    });
   }
 
   async presentAlert(){

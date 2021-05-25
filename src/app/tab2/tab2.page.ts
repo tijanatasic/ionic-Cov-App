@@ -37,6 +37,7 @@ export class Tab2Page implements OnInit {
               console.log(resData);
               loadingEl.dismiss();
               this.router.navigateByUrl('/user');
+              logInForm.reset();
             }
           });
         });

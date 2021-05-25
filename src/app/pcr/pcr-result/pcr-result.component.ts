@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Pcr } from '../pcr.model';
+import { PcrService } from '../pcr.service';
 
 @Component({
   selector: 'app-pcr-result',
@@ -8,10 +9,9 @@ import { Pcr } from '../pcr.model';
 })
 export class PcrResultComponent implements OnInit {
 
-  @Input() pcr: Pcr;
+  @Input() public element=this.pcrService.resultUser;
 
-
-  constructor() { }
+  constructor(private pcrService: PcrService) { }
 
   ngOnInit() {
   }

@@ -55,9 +55,9 @@ export class AuthService {
     return this._user.asObservable().pipe(
       map((user) => {
         if (user) {
-          return !!user.id;
+          return user.id;
         } else {
-          return null;
+          return '';
         }
       })
     );
@@ -79,15 +79,15 @@ export class AuthService {
   }
 
   logIn(user: UserData) {
-    this._isUserAuthenticated = true;
     return this.http.post<AuthResponseData>(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment
     .firebaseAPIKey}`,
       {email: user.email, password: user.password, returnSecureToken: true})
       .pipe(
         tap((userData) => {
+          this._isUserAuthenticated = true;
           const expirationTime = new Date(new Date().getTime() + +userData.expiresIn * 1000);
           const user1 = new User(userData.localId, userData.email, userData.idToken, expirationTime);
-          //moje
+          user1.isAdmin=false;
           console.log(user1);
           this.currentUser=user1;
           this._user.next(user1);

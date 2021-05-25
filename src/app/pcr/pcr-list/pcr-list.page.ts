@@ -10,6 +10,7 @@ interface PcrData{
   phone: number;
   city: string;
   result: string;
+  userID: string;
 }
 
 @Component({
