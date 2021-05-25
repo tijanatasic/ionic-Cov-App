@@ -90,13 +90,14 @@ export class AuthService {
           user1.isAdmin=false;
           console.log(user1);
           this.currentUser=user1;
-          this._user.next(user1);
+          this._user.next(this.currentUser);
         })
       );
   }
 
   logOut() {
-    this._user.next(null);
+    this.currentUser=null;
+    // this._user.next(null);
   }
 }
 

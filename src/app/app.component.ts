@@ -23,5 +23,6 @@ export class AppComponent {
   logout(){
     console.log('Logged out');
     this.authService.logOut();
+    window.location.assign('/');
   }
 }
