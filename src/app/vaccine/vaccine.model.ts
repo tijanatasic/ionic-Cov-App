@@ -4,4 +4,5 @@ export interface Vaccine {
   phone: number;
   vaccine: string;
   dose: string;
+  userId: string;
 }

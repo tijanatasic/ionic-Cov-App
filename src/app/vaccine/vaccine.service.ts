@@ -2,6 +2,7 @@ import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import {catchError, map, retry} from 'rxjs/operators';
+import { AuthService } from '../auth.service';
 import { VaccineNumber } from './vaccine-number.model';
 import {Vaccine} from './vaccine.model';
 
@@ -11,6 +12,7 @@ interface VaccineData{
   phone: number;
   vaccine: string;
   dose: string;
+  userId: string;
 }
 
 interface VaccineNo{
@@ -38,9 +40,9 @@ export class VaccineService {
 
 
 
-  addSigned(jmbg: number, phone: number, vaccine: string, dose: string){
+  addSigned(jmbg: number, phone: number, vaccine: string, dose: string, userId: string){
     return this.http.post<{jmbg: number}>('https://covapp-ionic-default-rtdb.europe-west1.firebasedatabase.app/vaccine.json',{
-      jmbg, phone, vaccine,dose});
+      jmbg, phone, vaccine,dose, userId});
   }
 
   getSigned(){
@@ -54,6 +56,7 @@ export class VaccineService {
             jmbg: res[key].jmbg,
             phone: res[key].phone,
             vaccine: res[key].vaccine,
+            userId: res[key].userId,
             dose: res[key].dose
           });
         }
@@ -96,7 +99,28 @@ export class VaccineService {
 
   deleteVaccinated(element: Vaccine){
     console.log(element);
+    this.http.post<{key: string}>('https://covapp-ionic-default-rtdb.europe-west1.firebasedatabase.app/vaccinated.json',element).subscribe();
     return this.http.delete<void>('https://covapp-ionic-default-rtdb.europe-west1.firebasedatabase.app/vaccine/'
     +element.id+'.json').subscribe();
+  }
+
+  getVaccinated(){
+    return this.http.get<{[key: string]: VaccineData}>('https://covapp-ionic-default-rtdb.europe-west1.firebasedatabase.app/vaccinated.json')
+    .pipe(map((res)=>{
+      const vaccines: VaccineData[]=[];
+      for(const key in res){
+        if(res.hasOwnProperty(key)){
+          vaccines.push({
+            id: key,
+            jmbg: res[key].jmbg,
+            phone: res[key].phone,
+            vaccine: res[key].vaccine,
+            userId: res[key].userId,
+            dose: res[key].dose
+          });
+        }
+      }
+      return vaccines;
+    }));
   }
 }

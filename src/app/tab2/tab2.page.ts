@@ -2,7 +2,7 @@ import { Component , OnInit} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {AuthService} from '../auth.service';
 import {Router} from '@angular/router';
-import { LoadingController } from '@ionic/angular';
+import { AlertController, LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab2',
@@ -11,7 +11,8 @@ import { LoadingController } from '@ionic/angular';
 })
 export class Tab2Page implements OnInit {
 
-  constructor(private authService: AuthService,private loadingCtrl: LoadingController, private router: Router) { }
+  constructor(private authService: AuthService,private loadingCtrl: LoadingController, private router: Router,
+    private alertController: AlertController) { }
 
   ngOnInit() {
   }
@@ -39,8 +40,28 @@ export class Tab2Page implements OnInit {
               this.router.navigateByUrl('/user');
               logInForm.reset();
             }
-          });
+          }, (error) => {
+            loadingEl.dismiss();
+            this.presentErrorAlert();
+            logInForm.reset();
+           });
         });
     }
+  }
+
+
+  async presentErrorAlert() {
+    const alert = await this.alertController.create({
+      message: 'Wrong email or password.',
+      buttons: [
+        {
+          text: 'Okay',
+          handler: () => {
+          this.router.navigateByUrl('/tabs/tab2');
+          }
+        }
+      ]
+    });
+    await alert.present();
   }
 }

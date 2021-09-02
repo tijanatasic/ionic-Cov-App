@@ -25,7 +25,7 @@ export class VaccinePage implements OnInit {
 
   vaccineNum: VaccineNumber;
 
-  constructor(private alertController: AlertController, private router: Router, private service: VaccineService) { }
+  constructor(private alertController: AlertController, private router: Router, private service: VaccineService, private authService: AuthService) { }
 
   ngOnInit() {
     this.service.getVaccines().subscribe((vaccineNum: VaccineNo)=>{
@@ -37,7 +37,7 @@ export class VaccinePage implements OnInit {
   onSignUp(signUp: NgForm) {
     console.log(signUp);
     if (signUp.valid) {
-      this.service.addSigned(signUp.value.jmbg,signUp.value.phone,signUp.value.vaccine,'none').subscribe((res)=>{
+      this.service.addSigned(signUp.value.jmbg,signUp.value.phone,signUp.value.vaccine,'none', this.authService.currentUser.id).subscribe((res)=>{
         console.log(res);
       });
       this.presentAlert();

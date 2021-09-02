@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-overview',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OverviewPage implements OnInit {
 
-  constructor() { }
+  data=[];
+  myDate: String = new Date().toISOString();
+
+  constructor( private authService: AuthService) { }
 
   ngOnInit() {
+    this.authService.getCovidInfo().subscribe((res=>{
+      this.data=res;
+      console.log(this.data);
+    }));
   }
 
 }

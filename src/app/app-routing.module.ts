@@ -47,6 +47,14 @@ const routes: Routes = [
     loadChildren: () => import('./pcr/pcr-list/pcr-list.module').then( m => m.PcrListPageModule),
     canLoad: [AuthGuard]
   },
+  {
+    path: 'qrgenerator',
+    loadChildren: () => import('./qrgenerator/qrgenerator.module').then( m => m.QrgeneratorPageModule)
+  },
+  {
+    path: 'tab5',
+    loadChildren: () => import('./tab5/tab5.module').then( m => m.Tab5PageModule)
+  },
 
 ];
 @NgModule({

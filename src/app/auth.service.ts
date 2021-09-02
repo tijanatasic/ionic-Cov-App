@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import {User} from '../app/user/user.model';
 import {map, tap} from 'rxjs/operators';
+import { error } from '@angular/compiler/src/util';
 
 interface AuthResponseData {
   kind: string;
@@ -25,6 +26,17 @@ interface UserData {
   userId: string;
 }
 
+interface CovidInfo{
+  infected: number;
+  deceased: number;
+  tested: number;
+  hospitalized: number;
+  patientsOnVentilators: number;
+  tested24hours: number;
+  infected24hours: number;
+  deceased24hours: number;
+}
+
 
 @Injectable({
   providedIn: 'root'
@@ -35,6 +47,8 @@ export class AuthService {
   private _user = new BehaviorSubject<User>(null);
   private _isUserAuthenticated = false;
 
+  public covidAPI='https://api.apify.com/v2/key-value-stores/aHENGKUPUhKlX97aL/records/LATEST?disableRedirect=true';
+  public covidInfo;
 
   constructor(private http: HttpClient) { }
 
@@ -98,6 +112,14 @@ export class AuthService {
   logOut() {
     this.currentUser=null;
     // this._user.next(null);
+  }
+
+  getCovidInfo(){
+    return this.http.get<{[key: string]: CovidInfo[]}>(this.covidAPI)
+    .pipe(map((res)=>{
+      this.covidInfo=res;
+      return this.covidInfo;
+    }));
   }
 }
 

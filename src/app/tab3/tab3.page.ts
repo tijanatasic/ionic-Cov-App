@@ -2,7 +2,7 @@ import { Component ,OnInit} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {AuthService} from '../auth.service';
 import {Router} from '@angular/router';
-import { LoadingController } from '@ionic/angular';
+import { AlertController, LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab3',
@@ -11,7 +11,8 @@ import { LoadingController } from '@ionic/angular';
 })
 export class Tab3Page {
 
-  constructor(private authService: AuthService,private loadingCtrl: LoadingController, private router: Router) { }
+  constructor(private authService: AuthService,private loadingCtrl: LoadingController, private router: Router, 
+    private alertController: AlertController) { }
 
   onLogInAd(logInAdForm: NgForm) {
     console.log(logInAdForm);
@@ -37,8 +38,27 @@ export class Tab3Page {
               this.router.navigateByUrl('/admin');
               logInAdForm.reset();
             }
+          },(error)=>{
+            loadingEl.dismiss();
+            this.presentErrorAlert();
+            logInAdForm.reset();
           });
         });
     }
+  }
+
+  async presentErrorAlert() {
+    const alert = await this.alertController.create({
+      message: 'Wrong email or password.',
+      buttons: [
+        {
+          text: 'Okay',
+          handler: () => {
+          this.router.navigateByUrl('/tabs/tab3');
+          }
+        }
+      ]
+    });
+    await alert.present();
   }
 }

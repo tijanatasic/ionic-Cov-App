@@ -7,12 +7,13 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content *ngIf="data">
   <ion-card style="margin-top: 50px;">
     <ion-card-header class="stat">
       <ion-card-title class="data">Statistical data in Serbia</ion-card-title>
       <ion-card-subtitle style="color: white; text-align: center;">
-        Last time updated: 07.05.2021.
+        Last time updated:
+        <ion-datetime displayFormat="DD/MM/YYYY" value="{{data.lastUpdatedAtApify}}"></ion-datetime>
       </ion-card-subtitle>
     </ion-card-header>
 
@@ -20,13 +21,13 @@
       <ion-grid>
         <ion-row class="first-row">
           <ion-col>
-            <div>698,518</div>
+            <div>{{data.infected}}</div>
           </ion-col>
           <ion-col>
-            <div>6,519</div>
+            <div>{{data.deceased}}</div>
           </ion-col>
           <ion-col>
-            <div>0.93%</div>
+            <div>{{(data.deceased/data.infected*100).toFixed(2)}}%</div>
           </ion-col>
         </ion-row>
         <ion-row class="second-row">
@@ -42,13 +43,13 @@
         </ion-row>
         <ion-row class="first-row">
           <ion-col>
-            <div>3,907,936</div>
+            <div>{{data.tested}}</div>
           </ion-col>
           <ion-col>
-            <div>13,206</div>
+            <div>{{data.tested24hours}}</div>
           </ion-col>
           <ion-col>
-            <div>1,277</div>
+            <div>{{data.infected24hours}}</div>
           </ion-col>
         </ion-row>
         <ion-row class="second-row">
@@ -64,13 +65,13 @@
         </ion-row>
         <ion-row class="first-row">
           <ion-col>
-            <div>20</div>
+            <div>{{data.deceased24hours}}</div>
           </ion-col>
           <ion-col>
-            <div>3,901</div>
+            <div>{{data.hospitalized}}</div>
           </ion-col>
           <ion-col>
-            <div>131</div>
+            <div>{{data.patientsOnVentilators}}</div>
           </ion-col>
         </ion-row>
         <ion-row class="second-row">

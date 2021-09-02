@@ -27,6 +27,12 @@
           </ion-item>
         </ion-menu-toggle>
         <ion-menu-toggle>
+          <ion-item routerLink="/qrgenerator">
+            <ion-icon name="barcode" slot="start"></ion-icon>
+            <ion-label>Generate QR code</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
           <ion-item (click)="logout()">
             <ion-icon name="log-out-outline" slot="start"></ion-icon>
             <ion-label>Log out</ion-label>

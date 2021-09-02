@@ -21,11 +21,11 @@ export class PcrService {
 
   resultUser;
   pcrs: Pcr[];
+  pcrResult;
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
   addSigned(jmbg: number, phone: number, city: string, result: string){
-
     this.authService.usersId.subscribe((userID)=>{
       console.log(userID);
       this.http.post<{jmbg: number}>('https://covapp-ionic-default-rtdb.europe-west1.firebasedatabase.app/pcr.json',{

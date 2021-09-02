@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="user"></ion-back-button>
+    </ion-buttons>
+    <ion-title style="font-weight: bold;">Generate your QR code</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="secondary">
+
+  <ion-row class="ion-justify-content-center" style="padding-top: 20px;">
+    <ion-col></ion-col>
+    <ion-col>
+      <ion-button size="large" color="success" (click)="generateBarCode()" style="width: 290px;"><ion-icon name="barcode" style="margin-right: 5px;"></ion-icon> Generate QR code</ion-button>
+      <ion-button size="large" color="success" (click)="scanCode()" style="width: 290px;"><ion-icon name="scan-outline" style="margin-right: 5px;"></ion-icon> Scan QR code</ion-button>
+    </ion-col>
+    <ion-col></ion-col>
+  </ion-row>
+  <ion-row class="ion-justify-content-center" style="padding-top: 20px;">
+  <ngx-qrcode [value]="createdCode" style="size: 300"></ngx-qrcode>
+  </ion-row>
+
+  <ion-card *ngIf="scannedCode">
+    <ion-card-content style="font-size: 15px;">
+      {{scannedCode}}
+    </ion-card-content>
+  </ion-card>
+  
+</ion-content>
